@@ -8,7 +8,7 @@ from src.utils.hashing import calculate_hash
 from src.config.sensitive import is_sensitive
 from src.utils.path_classifier import normalize_path
 from src.utils.user_attribution import get_actor
-
+from src.utils.process_finder import find_process_by_file_path
 
 
 activity_logger = get_json_logger(LOG_DIR)
@@ -17,7 +17,12 @@ class FileEventHandler(FileSystemEventHandler):
     
     def log_event(self,event_type,path,extra=None,sensitive=False):
         user = get_actor(path,time.time())
-
+        # process = find_process_by_file_path(path)
+        # if not process:
+        #     print("No process Found")
+        #     return
+        # else:
+        #     print(process)
         if user == "UNKNOWN":
             alert_admin(
                 event_type="SENSITIVE_FILE_ACTION_UNATTRIBUTED",

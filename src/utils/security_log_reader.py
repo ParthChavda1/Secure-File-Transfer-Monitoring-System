@@ -13,12 +13,12 @@ def query_security_events(lookback_seconds=20):
     }} | Where-Object {{ $_.Id -in 4663,4660 }} | Select-Object TimeCreated, Id, Message, Properties | ConvertTo-Json
     """
 
-    result = subprocess.getoutput(
-        # ["powershell", "-Command", 
+    result = subprocess.run(
+        ["powershell", "-Command", 
          ps_cmd
-        #  ],
-        # capture_output=True,
-        # text=True,
+         ],
+        capture_output=True,
+        text=True,
         # run_as_admin = True
     )
 

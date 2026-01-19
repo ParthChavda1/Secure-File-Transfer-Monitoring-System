@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 
-CONFIG_DIR = Path("src\config")
+CONFIG_DIR = Path("config")
 MONITOR_FILE = CONFIG_DIR / "monitor_paths.json"
 SENSITIVE_FILE = CONFIG_DIR / "sensitive_paths.json"
 

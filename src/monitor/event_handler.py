@@ -1,14 +1,13 @@
-from watchdog.events import FileSystemEventHandler
 import time
+from watchdog.events import FileSystemEventHandler
 from src.utils.alert import alert_admin
 from src.utils.hash_store import remove_hash, update_hash
 from src.utils.logger import get_json_logger
-from src.config.settings import LOG_DIR
+from config.settings import LOG_DIR
 from src.utils.hashing import calculate_hash
-from src.config.sensitive import is_sensitive
+from config.sensitive import is_sensitive
 from src.utils.path_classifier import normalize_path
 from src.utils.user_attribution import get_actor
-from src.utils.process_finder import find_process_by_file_path
 
 
 activity_logger = get_json_logger(LOG_DIR)
@@ -16,30 +15,29 @@ activity_logger = get_json_logger(LOG_DIR)
 class FileEventHandler(FileSystemEventHandler):   
     
     def log_event(self,event_type,path,extra=None,sensitive=False):
-        user = get_actor(path,time.time())
-        # process = find_process_by_file_path(path)
-        # if not process:
-        #     print("No process Found")
-        #     return
+        # user = get_actor(path,time.time())
+        # # process = find_process_by_file_path(path)
+        # # if not process:
+        # #     print("No process Found")
+        # #     return
+        # # else:
+        # #     print(process)
+        # if user == "UNKNOWN":
+        #     alert_admin(
+        #         event_type="SENSITIVE_FILE_ACTION_UNATTRIBUTED",
+        #         path=path,
+        #         severity="CRITICAL"
+        #     )
         # else:
-        #     print(process)
-        if user == "UNKNOWN":
-            alert_admin(
-                event_type="SENSITIVE_FILE_ACTION_UNATTRIBUTED",
-                path=path,
-                severity="CRITICAL"
-            )
-        else:
-            alert_admin(
-                event_type="SENSITIVE_FILE_ACTION",
-                path=path,
-                extra={"user": user},
-                severity="HIGH"
-            )
+        #     alert_admin(
+        #         event_type="SENSITIVE_FILE_ACTION",
+        #         path=path,
+        #         extra={"user": user},
+        #         severity="HIGH"
+        #     )
         log_entry={
             "event_type":event_type,
             "file":path,
-            "user":user,
             "extra": extra,
         }
         if(sensitive):

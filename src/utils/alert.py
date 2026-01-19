@@ -1,6 +1,6 @@
 import json
 import time
-from src.config.settings import ALERT_LOG
+from config.settings import ALERT_LOG
 from src.utils.logger import get_json_logger
 
 alert_logger = get_json_logger(ALERT_LOG)

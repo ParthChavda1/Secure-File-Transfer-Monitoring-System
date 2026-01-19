@@ -1,6 +1,6 @@
 import json
 import os
-from src.config.settings import HASH_STORE_FILE
+from config.settings import HASH_STORE_FILE
 
 _hash_store = {}
 

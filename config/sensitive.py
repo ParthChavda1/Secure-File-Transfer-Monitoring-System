@@ -7,7 +7,7 @@ _sensitive_dirs =  set()
 _sensitive_files =  set()
 
 
-def load_sensitive_paths(file_path = "src\config\sensitive_paths.json"):
+def load_sensitive_paths(file_path = "config\sensitive_paths.json"):
     global _sensitive_dirs,_sensitive_files
     
     with open(file_path,"r") as f:
@@ -25,4 +25,4 @@ def is_sensitive(path):
     path = normalize_path(path)
     if path in _sensitive_files:
         return True
-    return any(path.startswith(d) for d in _sensitive_dirs)
+    return False

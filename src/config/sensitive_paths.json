@@ -1,6 +1,9 @@
 {
   "directories": [
-    "C:\\Users\\parth\\OneDrive\\Desktop"
+    "D:\\pdfconverter"
   ],
-  "files": []
+  "files": [
+    "D:\\pdfconverter\\test1.txt",
+    "D:\\pdfconverter\\test3.txt"
+  ]
 }

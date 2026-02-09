@@ -4,6 +4,10 @@ venv/
 
 hash_store.json
 
+logs/
+activity.log
+alerts.log
+
 __pycache__/
 *.pyc
 
